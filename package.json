@@ -1,0 +1,11 @@
+{
+  "name": "imutate",
+  "version": "0.0.0",
+  "description": "dont change it, mostly",
+  "main": "imutate.js",
+  "author": "Samuel Williams",
+  "license": "MIT",
+  "dependencies": {
+    "underscore": "^1.6.0"
+  }
+}
