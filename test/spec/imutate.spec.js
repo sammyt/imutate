@@ -113,6 +113,10 @@ describe('only', function() {
       var shop2 = im(shop, 'stock.fruit', im.only(apple), im.assoc, 'bitten', true);
 
       expect(shop2.stock.fruit[2]).to.eql({ bitten: true });
+      expect(shop2.staff).to.equal(shop.staff);
+      expect(shop2.till).to.equal(shop.till);
+      expect(shop2.stock.meat).to.equal(shop.stock.meat);
+      expect(shop2.stock.fruit).to.not.equal(shop.stock.fruit);
     })
   })
 });
