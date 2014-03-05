@@ -160,6 +160,10 @@ var assocArr = function(arr, index, value) {
  */
 var assocObj = function (map, key, value) {
   var tmp = {};
+
+  if(_.isFunction(value)) {
+    value = value(map[key]);
+  }
   tmp[key] = value;
   return _.extend({}, map, tmp);
 };
@@ -229,11 +233,20 @@ imutate.only = function(item) {
   return function(items, fn) {
     var index = items.indexOf(item);
     var container = items.concat();
+
     container[index] = fn.apply(null, [item].concat(_.drop(arguments, 2)));
     return container;
   }
 };
 
+imutate.index = function(index) {
+  return function(items, fn) {
+    var container = items.concat();
+    var item = container[index];
+    container[index] = fn.apply(null, [item].concat(_.drop(arguments, 2)));
+    return container;
+  }
+};
 module.exports = imutate;
 
 
